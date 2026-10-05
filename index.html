@@ -26,51 +26,6 @@ body{
     color:#ffffff;
     font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
-    cursor:none;
-}
-
-/* CURSOR */
-
-.cursor{
-    position:fixed;
-    width:13px;
-    height:13px;
-    background:#ffffff;
-    border-radius:50%;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:99999;
-    mix-blend-mode:difference;
-    transition:.2s;
-}
-
-.cursor.active{
-    width:42px;
-    height:42px;
-}
-
-.cursor-ring{
-    position:fixed;
-    width:40px;
-    height:40px;
-    border:1px solid rgba(130,100,255,.8);
-    border-radius:50%;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:99998;
-    transition:left .08s,top .08s;
-}
-
-.cursor-glow{
-    position:fixed;
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle,rgba(111,80,255,.22),transparent 70%);
-    filter:blur(15px);
-    z-index:-1;
 }
 
 /* BACKGROUND */
@@ -580,6 +535,8 @@ section{
     border-radius:40px;
     background:radial-gradient(circle at center,rgba(90,70,255,.2),rgba(255,255,255,.025));
     border:1px solid rgba(255,255,255,.1);
+    transform-style:preserve-3d;
+    transition:.2s;
 }
 
 .vision-small{
@@ -692,72 +649,239 @@ footer{
     transform:translateY(-5px);
 }
 
-/* MOBILE */
+
+/* =================================================
+   MOBILE RESPONSIVE
+   ================================================= */
 
 @media(max-width:850px){
 
     body{
-        cursor:auto;
-    }
-
-    .cursor,
-    .cursor-ring,
-    .cursor-glow{
-        display:none;
+        width:100%;
+        overflow-x:hidden;
     }
 
     header{
-        padding:0 20px;
+        height:auto;
+        min-height:65px;
+        padding:15px 18px;
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .logo{
+        font-size:27px;
     }
 
     nav{
-        gap:10px;
+        width:100%;
+        justify-content:center;
+        gap:13px;
+        flex-wrap:wrap;
     }
 
     nav a{
-        font-size:9px;
+        font-size:10px;
     }
 
     .hero{
+        width:100%;
+        min-height:auto;
+        padding:145px 20px 70px;
+        display:flex;
         flex-direction:column;
-        align-items:flex-start;
-        padding:130px 25px 70px;
+        align-items:center;
+        justify-content:center;
+        gap:55px;
+        text-align:left;
+    }
+
+    .hero-left{
+        width:100%;
+        max-width:100%;
+    }
+
+    .mini-title{
+        font-size:10px;
+        letter-spacing:4px;
+        margin-bottom:20px;
     }
 
     .hero h1{
-        font-size:65px;
+        width:100%;
+        font-size:clamp(58px,17vw,85px);
+        line-height:.9;
+        letter-spacing:-5px;
+        word-break:normal;
+    }
+
+    .hero h2{
+        font-size:24px;
+        line-height:1.4;
+    }
+
+    .hero-description{
+        width:100%;
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .buttons{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .profile-wrap{
+        width:100%;
+        display:flex;
+        justify-content:center;
     }
 
     .profile{
-        width:100%;
-        max-width:350px;
-        align-self:center;
+        width:min(350px,92vw);
+        height:430px;
     }
 
     section{
+        width:100%;
         padding:80px 20px;
     }
 
+    .section-title{
+        margin-bottom:40px;
+    }
+
+    .section-title h2{
+        font-size:clamp(38px,12vw,55px);
+        letter-spacing:-3px;
+    }
+
     .cards{
+        width:100%;
+        display:grid;
         grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .card{
+        width:100%;
+        min-height:auto;
+        padding:27px;
     }
 
     .timeline-card{
+        width:100%;
         flex-direction:column;
         gap:15px;
+        padding:27px;
+    }
+
+    .timeline-year{
+        min-width:auto;
+    }
+
+    .project-card{
+        min-height:310px;
+    }
+
+    .vision{
+        width:100%;
+        padding:65px 20px;
     }
 
     .vision h2{
-        font-size:50px;
+        font-size:clamp(42px,12vw,65px);
+        letter-spacing:-4px;
     }
 
     .contact-box{
+        width:100%;
         padding:50px 20px;
     }
 
-    footer{
+    .contact-box h3{
+        font-size:30px;
+    }
+
+    .contact-buttons{
         flex-direction:column;
-        gap:10px;
+    }
+
+    .contact-buttons a{
+        width:100%;
+    }
+
+    footer{
+        padding:35px 20px;
+        flex-direction:column;
+        gap:12px;
+        text-align:center;
+    }
+
+    .top{
+        right:18px;
+        bottom:18px;
+    }
+
+}
+
+
+/* SMALL PHONES */
+
+@media(max-width:400px){
+
+    .hero{
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+    section{
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+    .hero h1{
+        font-size:56px;
+        letter-spacing:-4px;
+    }
+
+    .hero h2{
+        font-size:21px;
+    }
+
+    .profile{
+        width:94vw;
+    }
+
+    .avatar,
+    .avatar img{
+        width:130px;
+        height:130px;
+    }
+
+    .card{
+        padding:23px;
+    }
+
+}
+
+
+/* DESKTOP 3D MOUSE EFFECT */
+
+@media(min-width:851px){
+
+    .profile,
+    .card,
+    .timeline-card,
+    .vision,
+    .contact-box{
+        transform-style:preserve-3d;
     }
 
 }
@@ -768,15 +892,6 @@ footer{
 
 
 <body>
-
-
-<!-- CURSOR -->
-
-<div class="cursor"></div>
-
-<div class="cursor-ring"></div>
-
-<div class="cursor-glow"></div>
 
 
 <!-- BACKGROUND -->
@@ -1402,232 +1517,4 @@ technology career tomorrow.
 
 </p>
 
-</div>
-
-</section>
-
-
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<div class="section-title">
-
-<p>
-05 — CONTACT
-</p>
-
-<h2>
-Let's Connect
-</h2>
-
-</div>
-
-
-<div class="contact-box tilt">
-
-<h3>
-Md Shahban
-</h3>
-
-<p>
-
-Student • Tech Enthusiast •
-Future Cybersecurity Professional
-
-</p>
-
-
-<div class="contact-buttons">
-
-<a href="mailto:yourmail@gmail.com">
-📧 Email
-</a>
-
-<a href="https://github.com/" target="_blank">
-💻 GitHub
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<p>
-© 2026 Md Shahban
-</p>
-
-<p>
-Learn • Build • Secure
-</p>
-
-</footer>
-
-
-
-<!-- TOP -->
-
-<a href="#home" class="top">
-↑
-</a>
-
-
-
-<script>
-
-/* CURSOR */
-
-const cursor =
-document.querySelector(".cursor");
-
-const ring =
-document.querySelector(".cursor-ring");
-
-const glow =
-document.querySelector(".cursor-glow");
-
-
-document.addEventListener("mousemove",function(e){
-
-cursor.style.left =
-e.clientX+"px";
-
-cursor.style.top =
-e.clientY+"px";
-
-ring.style.left =
-e.clientX+"px";
-
-ring.style.top =
-e.clientY+"px";
-
-glow.style.left =
-e.clientX+"px";
-
-glow.style.top =
-e.clientY+"px";
-
-});
-
-
-/* 3D EFFECT */
-
-const tiltCards =
-document.querySelectorAll(".tilt");
-
-
-tiltCards.forEach(function(card){
-
-card.addEventListener("mousemove",function(e){
-
-const box =
-card.getBoundingClientRect();
-
-const x =
-e.clientX-box.left;
-
-const y =
-e.clientY-box.top;
-
-const centerX =
-box.width/2;
-
-const centerY =
-box.height/2;
-
-const rotateX =
-((y-centerY)/centerY)*-8;
-
-const rotateY =
-((x-centerX)/centerX)*8;
-
-card.style.transform =
-"perspective(1000px)"+
-" rotateX("+rotateX+"deg)"+
-" rotateY("+rotateY+"deg)"+
-" translateZ(15px)";
-
-});
-
-
-card.addEventListener("mouseleave",function(){
-
-card.style.transform =
-"perspective(1000px)"+
-" rotateX(0deg)"+
-" rotateY(0deg)"+
-" translateZ(0)";
-
-});
-
-});
-
-
-/* CURSOR HOVER */
-
-document
-.querySelectorAll("a,.tilt")
-.forEach(function(element){
-
-element.addEventListener("mouseenter",function(){
-
-cursor.classList.add("active");
-
-});
-
-element.addEventListener("mouseleave",function(){
-
-cursor.classList.remove("active");
-
-});
-
-});
-
-
-/* PARTICLES */
-
-for(let i=0;i<45;i++){
-
-const particle =
-document.createElement("div");
-
-particle.style.position="fixed";
-
-particle.style.width="3px";
-
-particle.style.height="3px";
-
-particle.style.borderRadius="50%";
-
-particle.style.background="white";
-
-particle.style.left=
-Math.random()*100+"%";
-
-particle.style.top=
-Math.random()*100+"%";
-
-particle.style.opacity=
-Math.random();
-
-particle.style.pointerEvents="none";
-
-particle.style.zIndex="-5";
-
-document.body.appendChild(particle);
-
-}
-
-</script>
-
-</body>
-
-</html>
+</di
