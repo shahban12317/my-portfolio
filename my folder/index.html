@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Md Shahban | Future Tech Professional</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#03030a;
+    color:#ffffff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+/* CURSOR */
+
+.cursor{
+    position:fixed;
+    width:13px;
+    height:13px;
+    background:#ffffff;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:99999;
+    mix-blend-mode:difference;
+    transition:.2s;
+}
+
+.cursor.active{
+    width:42px;
+    height:42px;
+}
+
+.cursor-ring{
+    position:fixed;
+    width:40px;
+    height:40px;
+    border:1px solid rgba(130,100,255,.8);
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:99998;
+    transition:left .08s,top .08s;
+}
+
+.cursor-glow{
+    position:fixed;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(111,80,255,.22),transparent 70%);
+    filter:blur(15px);
+    z-index:-1;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-10;
+    background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:55px 55px;
+}
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(110px);
+    opacity:.35;
+    z-index:-8;
+    animation:floating 12s infinite alternate ease-in-out;
+}
+
+.orb1{
+    width:450px;
+    height:450px;
+    background:#653cff;
+    left:-200px;
+    top:5%;
+}
+
+.orb2{
+    width:400px;
+    height:400px;
+    background:#00bfff;
+    right:-200px;
+    bottom:5%;
+    animation-delay:3s;
+}
+
+.orb3{
+    width:250px;
+    height:250px;
+    background:#ff2d9a;
+    left:40%;
+    top:45%;
+    animation-delay:6s;
+}
+
+@keyframes floating{
+    0%{
+        transform:translate(0,0);
+    }
+    100%{
+        transform:translate(120px,-90px) scale(1.15);
+    }
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(3,3,10,.65);
+    backdrop-filter:blur(25px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:5000;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.logo span{
+    color:#8065ff;
+    text-shadow:0 0 25px #8065ff;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    position:relative;
+    color:#999;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:130px 9% 80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:70px;
+}
+
+.hero-left{
+    max-width:720px;
+    z-index:10;
+}
+
+.mini-title{
+    color:#8e7bff;
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(55px,8vw,115px);
+    line-height:.88;
+    letter-spacing:-7px;
+    margin-bottom:35px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#8b70ff,#00d9ff,#ff4fca);
+    background-size:200%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradientMove 5s infinite alternate;
+}
+
+@keyframes gradientMove{
+    from{
+        background-position:0%;
+    }
+    to{
+        background-position:100%;
+    }
+}
+
+.hero h2{
+    font-size:clamp(20px,3vw,34px);
+    line-height:1.35;
+    color:#ddd;
+}
+
+.hero h2 span{
+    color:#8976ff;
+}
+
+.hero-description{
+    max-width:620px;
+    color:#858595;
+    line-height:1.9;
+    margin:25px 0 35px;
+    font-size:15px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 24px;
+    border-radius:13px;
+    text-decoration:none;
+    transition:.35s;
+    font-size:13px;
+}
+
+.btn-primary{
+    background:#fff;
+    color:#050510;
+    font-weight:bold;
+}
+
+.btn-primary:hover{
+    transform:translateY(-6px) scale(1.03);
+}
+
+.btn-secondary{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.1);
+}
+
+/* PROFILE */
+
+.profile-wrap{
+    perspective:1000px;
+    z-index:5;
+}
+
+.profile{
+    width:350px;
+    height:460px;
+    border-radius:35px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(25px);
+    box-shadow:
+    0 50px 120px rgba(0,0,0,.6),
+    inset 0 0 50px rgba(255,255,255,.03);
+    transform-style:preserve-3d;
+    transition:.15s;
+}
+
+.profile::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:35px;
+    background:linear-gradient(120deg,transparent,#765cff,transparent,#00d9ff,transparent);
+    opacity:.4;
+    z-index:-1;
+}
+
+/* PHOTO */
+
+.avatar{
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#765cff,#00d9ff);
+    box-shadow:0 0 80px rgba(100,80,255,.55);
+    transform:translateZ(70px);
+    position:relative;
+    overflow:hidden;
+}
+
+.avatar img{
+    width:145px;
+    height:145px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+}
+
+.avatar::after{
+    content:"";
+    position:absolute;
+    inset:-12px;
+    border-radius:50%;
+    border:1px solid rgba(130,100,255,.5);
+    animation:avatarRing 3s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes avatarRing{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.profile h3{
+    margin-top:35px;
+    font-size:27px;
+    transform:translateZ(50px);
+}
+
+.profile p{
+    color:#999;
+    margin-top:10px;
+    transform:translateZ(35px);
+}
+
+.status{
+    margin-top:28px;
+    padding:10px 17px;
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    color:#aaa;
+    font-size:11px;
+    transform:translateZ(30px);
+}
+
+.status span{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#3cff8b;
+    box-shadow:0 0 15px #3cff8b;
+    margin-right:7px;
+}
+
+/* SECTION */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:120px 30px;
+}
+
+.section-title{
+    margin-bottom:60px;
+}
+
+.section-title p{
+    color:#8065ff;
+    letter-spacing:4px;
+    font-size:11px;
+    margin-bottom:12px;
+}
+
+.section-title h2{
+    font-size:clamp(40px,6vw,65px);
+    letter-spacing:-4px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    min-height:280px;
+    padding:32px;
+    border-radius:27px;
+    background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.09);
+    transform-style:preserve-3d;
+    transition:.15s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    border-color:rgba(125,100,255,.6);
+    box-shadow:0 30px 80px rgba(70,50,200,.18);
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:30px;
+    transform:translateZ(35px);
+}
+
+.card h3{
+    font-size:21px;
+    margin-bottom:15px;
+    transform:translateZ(25px);
+}
+
+.card p{
+    color:#8d8d9c;
+    line-height:1.8;
+    font-size:14px;
+    transform:translateZ(15px);
+}
+
+/* TIMELINE */
+
+.timeline{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.timeline-card{
+    padding:32px;
+    display:flex;
+    gap:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+    transform-style:preserve-3d;
+    transition:.15s;
+}
+
+.timeline-card:hover{
+    border-color:#8065ff;
+    box-shadow:0 25px 70px rgba(80,60,255,.16);
+}
+
+.timeline-year{
+    min-width:80px;
+    color:#8875ff;
+    font-weight:bold;
+}
+
+.timeline-card h3{
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.timeline-card p{
+    color:#8c8c9a;
+    line-height:1.8;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 13px;
+    border-radius:30px;
+    background:rgba(128,101,255,.12);
+    color:#a99cff;
+    font-size:10px;
+}
+
+/* SKILLS */
+
+.skill-card{
+    min-height:230px;
+}
+
+.skill-icon{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.skill-sub{
+    color:#777;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.skill-bar{
+    height:5px;
+    background:rgba(255,255,255,.07);
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.skill-bar span{
+    display:block;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#765cff,#00d9ff);
+}
+
+/* PROJECTS */
+
+.project-card{
+    min-height:350px;
+}
+
+.project-number{
+    position:absolute;
+    right:20px;
+    top:10px;
+    font-size:70px;
+    font-weight:900;
+    color:rgba(255,255,255,.045);
+}
+
+.project-card h3{
+    margin-top:90px;
+}
+
+.tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.tags span{
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:10px;
+    background:rgba(128,101,255,.12);
+    color:#a99cff;
+}
+
+/* VISION */
+
+.vision{
+    text-align:center;
+    padding:90px 30px;
+    border-radius:40px;
+    background:radial-gradient(circle at center,rgba(90,70,255,.2),rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.vision-small{
+    color:#8b79ff;
+    letter-spacing:5px;
+    font-size:11px;
+}
+
+.vision h2{
+    font-size:clamp(45px,8vw,90px);
+    letter-spacing:-6px;
+    margin:25px 0;
+}
+
+.vision h2 span{
+    background:linear-gradient(90deg,#8065ff,#00d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.vision p:last-child{
+    color:#858593;
+}
+
+/* CONTACT */
+
+.contact-box{
+    text-align:center;
+    padding:70px 30px;
+    border-radius:35px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+    transform-style:preserve-3d;
+    transition:.2s;
+}
+
+.contact-box:hover{
+    border-color:#8065ff;
+}
+
+.contact-box h3{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#888;
+    line-height:1.7;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.contact-buttons a{
+    padding:13px 20px;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    transition:.3s;
+}
+
+.contact-buttons a:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+    padding:45px 7%;
+    border-top:1px solid rgba(255,255,255,.07);
+    display:flex;
+    justify-content:space-between;
+    color:#5f5f70;
+    font-size:11px;
+}
+
+/* TOP */
+
+.top{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:45px;
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+    text-decoration:none;
+    z-index:4000;
+    backdrop-filter:blur(10px);
+    transition:.3s;
+}
+
+.top:hover{
+    background:white;
+    color:black;
+    transform:translateY(-5px);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    body{
+        cursor:auto;
+    }
+
+    .cursor,
+    .cursor-ring,
+    .cursor-glow{
+        display:none;
+    }
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        gap:10px;
+    }
+
+    nav a{
+        font-size:9px;
+    }
+
+    .hero{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:130px 25px 70px;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .profile{
+        width:100%;
+        max-width:350px;
+        align-self:center;
+    }
+
+    section{
+        padding:80px 20px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .timeline-card{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .vision h2{
+        font-size:50px;
+    }
+
+    .contact-box{
+        padding:50px 20px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- CURSOR -->
+
+<div class="cursor"></div>
+
+<div class="cursor-ring"></div>
+
+<div class="cursor-glow"></div>
+
+
+<!-- BACKGROUND -->
+
+<div class="orb orb1"></div>
+
+<div class="orb orb2"></div>
+
+<div class="orb orb3"></div>
+
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="logo">
+S<span>.</span>
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#education">Education</a>
+
+<a href="#skills">Skills</a>
+
+<a href="#projects">Projects</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- HOME -->
+
+<section id="home" class="hero">
+
+
+<div class="hero-left">
+
+<p class="mini-title">
+HELLO, I'M
+</p>
+
+
+<h1>
+
+Md
+
+<span class="gradient">
+Shahban
+</span>
+
+</h1>
+
+
+<h2>
+
+Future Cybersecurity Professional
+
+<br>
+
+<span>
+& AI Web Developer
+</span>
+
+</h2>
+
+
+<p class="hero-description">
+
+I am a technology enthusiast building my skills
+in Cybersecurity, Artificial Intelligence,
+Web Development and Software Development.
+
+My goal is to learn, build useful projects
+and create a strong career in technology.
+
+</p>
+
+
+<div class="buttons">
+
+<a href="#projects" class="btn btn-primary">
+Explore My Work
+</a>
+
+<a href="#contact" class="btn btn-secondary">
+Let's Connect
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- PROFILE PHOTO -->
+
+<div class="profile-wrap">
+
+<div class="profile tilt">
+
+<div class="avatar">
+
+<img src="111.png" alt="Md Shahban">
+
+</div>
+
+
+<h3>
+Md Shahban
+</h3>
+
+
+<p>
+Tech Enthusiast
+</p>
+
+
+<div class="status">
+
+<span></span>
+
+Learning & Building
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+
+<p>
+01 — ABOUT ME
+</p>
+
+<h2>
+Who I Am
+</h2>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card tilt">
+
+<div class="icon">
+👨‍💻
+</div>
+
+<h3>
+My Journey
+</h3>
+
+<p>
+
+I have completed Class 12 and
+I am interested in building
+my career in the technology field.
+
+My interests include Cybersecurity,
+AI, Web Development and Software.
+
+</p>
+
+</div>
+
+
+
+<div class="card tilt">
+
+<div class="icon">
+🎯
+</div>
+
+<h3>
+My Goal
+</h3>
+
+<p>
+
+My goal is to become a skilled
+cybersecurity professional while
+also developing strong knowledge
+of AI and modern web technologies.
+
+</p>
+
+</div>
+
+
+
+<div class="card tilt">
+
+<div class="icon">
+🚀
+</div>
+
+<h3>
+My Mindset
+</h3>
+
+<p>
+
+I believe in learning from the basics,
+building projects and improving
+my skills step by step.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+<div class="section-title">
+
+<p>
+02 — EDUCATION
+</p>
+
+<h2>
+My Education
+</h2>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-card tilt">
+
+<div class="timeline-year">
+2026
+</div>
+
+<div>
+
+<h3>
+Class 12 — CBSE
+</h3>
+
+<p>
+Completed Class 12 with Biology stream.
+</p>
+
+<span class="badge">
+62%
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="timeline-card tilt">
+
+<div class="timeline-year">
+NEXT
+</div>
+
+<div>
+
+<h3>
+BCA — Planned
+</h3>
+
+<p>
+
+Planning to pursue Bachelor of
+Computer Applications and build
+a career in Cybersecurity and Technology.
+
+</p>
+
+<span class="badge">
+Future Goal
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="section-title">
+
+<p>
+03 — SKILLS
+</p>
+
+<h2>
+My Skills
+</h2>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+🌐
+</div>
+
+<h3>
+HTML
+</h3>
+
+<p class="skill-sub">
+Web Structure
+</p>
+
+<div class="skill-bar">
+<span style="width:70%"></span>
+</div>
+
+</div>
+
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+🎨
+</div>
+
+<h3>
+CSS
+</h3>
+
+<p class="skill-sub">
+Web Design
+</p>
+
+<div class="skill-bar">
+<span style="width:65%"></span>
+</div>
+
+</div>
+
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+🐍
+</div>
+
+<h3>
+Python
+</h3>
+
+<p class="skill-sub">
+Currently Learning
+</p>
+
+<div class="skill-bar">
+<span style="width:40%"></span>
+</div>
+
+</div>
+
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+🤖
+</div>
+
+<h3>
+AI Tools
+</h3>
+
+<p class="skill-sub">
+AI Content & Development
+</p>
+
+<div class="skill-bar">
+<span style="width:70%"></span>
+</div>
+
+</div>
+
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+🔐
+</div>
+
+<h3>
+Cybersecurity
+</h3>
+
+<p class="skill-sub">
+Career Interest
+</p>
+
+<div class="skill-bar">
+<span style="width:35%"></span>
+</div>
+
+</div>
+
+
+
+<div class="card skill-card tilt">
+
+<div class="skill-icon">
+📱
+</div>
+
+<h3>
+App Development
+</h3>
+
+<p class="skill-sub">
+Learning & Experimenting
+</p>
+
+<div class="skill-bar">
+<span style="width:40%"></span>
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="section-title">
+
+<p>
+04 — PROJECTS
+</p>
+
+<h2>
+Things I'm Building
+</h2>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card project-card tilt">
+
+<div class="project-number">
+01
+</div>
+
+<h3>
+AI Video Content
+</h3>
+
+<p>
+
+Creating AI-generated short-form
+video content, stories, visuals
+and creative concepts for social
+media platforms.
+
+</p>
+
+
+<div class="tags">
+
+<span>AI</span>
+<span>Video</span>
+<span>Content</span>
+
+</div>
+
+</div>
+
+
+
+<div class="card project-card tilt">
+
+<div class="project-number">
+02
+</div>
+
+<h3>
+Medicine Stock Reminder
+</h3>
+
+<p>
+
+Exploring an application concept
+for medicine stock management,
+reminders, notifications and
+user accounts.
+
+</p>
+
+
+<div class="tags">
+
+<span>App</span>
+<span>Supabase</span>
+<span>AI</span>
+
+</div>
+
+</div>
+
+
+
+<div class="card project-card tilt">
+
+<div class="project-number">
+03
+</div>
+
+<h3>
+3D Personal Portfolio
+</h3>
+
+<p>
+
+An interactive personal portfolio
+built using HTML, CSS and JavaScript
+with animated 3D interactions.
+
+</p>
+
+
+<div class="tags">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- VISION -->
+
+<section>
+
+<div class="vision tilt">
+
+<p class="vision-small">
+MY VISION
+</p>
+
+<h2>
+
+Learn.
+
+<span>
+Build.
+</span>
+
+Secure.
+
+</h2>
+
+<p>
+
+Building skills today for a stronger
+technology career tomorrow.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="section-title">
+
+<p>
+05 — CONTACT
+</p>
+
+<h2>
+Let's Connect
+</h2>
+
+</div>
+
+
+<div class="contact-box tilt">
+
+<h3>
+Md Shahban
+</h3>
+
+<p>
+
+Student • Tech Enthusiast •
+Future Cybersecurity Professional
+
+</p>
+
+
+<div class="contact-buttons">
+
+<a href="mailto:yourmail@gmail.com">
+📧 Email
+</a>
+
+<a href="https://github.com/" target="_blank">
+💻 GitHub
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Md Shahban
+</p>
+
+<p>
+Learn • Build • Secure
+</p>
+
+</footer>
+
+
+
+<!-- TOP -->
+
+<a href="#home" class="top">
+↑
+</a>
+
+
+
+<script>
+
+/* CURSOR */
+
+const cursor =
+document.querySelector(".cursor");
+
+const ring =
+document.querySelector(".cursor-ring");
+
+const glow =
+document.querySelector(".cursor-glow");
+
+
+document.addEventListener("mousemove",function(e){
+
+cursor.style.left =
+e.clientX+"px";
+
+cursor.style.top =
+e.clientY+"px";
+
+ring.style.left =
+e.clientX+"px";
+
+ring.style.top =
+e.clientY+"px";
+
+glow.style.left =
+e.clientX+"px";
+
+glow.style.top =
+e.clientY+"px";
+
+});
+
+
+/* 3D EFFECT */
+
+const tiltCards =
+document.querySelectorAll(".tilt");
+
+
+tiltCards.forEach(function(card){
+
+card.addEventListener("mousemove",function(e){
+
+const box =
+card.getBoundingClientRect();
+
+const x =
+e.clientX-box.left;
+
+const y =
+e.clientY-box.top;
+
+const centerX =
+box.width/2;
+
+const centerY =
+box.height/2;
+
+const rotateX =
+((y-centerY)/centerY)*-8;
+
+const rotateY =
+((x-centerX)/centerX)*8;
+
+card.style.transform =
+"perspective(1000px)"+
+" rotateX("+rotateX+"deg)"+
+" rotateY("+rotateY+"deg)"+
+" translateZ(15px)";
+
+});
+
+
+card.addEventListener("mouseleave",function(){
+
+card.style.transform =
+"perspective(1000px)"+
+" rotateX(0deg)"+
+" rotateY(0deg)"+
+" translateZ(0)";
+
+});
+
+});
+
+
+/* CURSOR HOVER */
+
+document
+.querySelectorAll("a,.tilt")
+.forEach(function(element){
+
+element.addEventListener("mouseenter",function(){
+
+cursor.classList.add("active");
+
+});
+
+element.addEventListener("mouseleave",function(){
+
+cursor.classList.remove("active");
+
+});
+
+});
+
+
+/* PARTICLES */
+
+for(let i=0;i<45;i++){
+
+const particle =
+document.createElement("div");
+
+particle.style.position="fixed";
+
+particle.style.width="3px";
+
+particle.style.height="3px";
+
+particle.style.borderRadius="50%";
+
+particle.style.background="white";
+
+particle.style.left=
+Math.random()*100+"%";
+
+particle.style.top=
+Math.random()*100+"%";
+
+particle.style.opacity=
+Math.random();
+
+particle.style.pointerEvents="none";
+
+particle.style.zIndex="-5";
+
+document.body.appendChild(particle);
+
+}
+
+</script>
+
+</body>
+
+</html>
